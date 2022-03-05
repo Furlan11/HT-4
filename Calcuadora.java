@@ -1,4 +1,5 @@
-package lab2Estructuras;
+
+public class Calcuadora {
 
 /**
  * una clase para crear un calculadora que recibe operacion en postfix
@@ -7,9 +8,9 @@ package lab2Estructuras;
  *
  */
 
-public class Calcladora {
+
 	
-	private Pila<Integer> calc;
+	
 
 	
 	/**
@@ -31,8 +32,12 @@ public class Calcladora {
 	 * @param op eel string con el cacrater que se queire validarString con la operacione ne l fomato postfix que se desea realñizar
 	 * @return String con el resultado o el mensaje de error
 	 */
-	public String calcular(String op) {
-		 calc= new Pila<>();
+	public String calcular(IStack<String> stack) {
+		Stack<Integer> calc = new Stack<Integer>();
+		String op="";
+		for(int z=0;z<stack.count();z++) {
+			op=op+stack.peek();
+		}
 		
 		
 		String muestra= "1 2 + 4 * 3 - /";
@@ -146,3 +151,4 @@ else{
 	
 	
 }
+
