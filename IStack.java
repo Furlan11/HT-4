@@ -4,8 +4,8 @@
 
 
 /**
- * @author MAAG
- *
+ * @author Guillermo Furlan 20713 
+ * @author Wilfredo Gallegos 20399
  */
 public interface IStack<T> {
 

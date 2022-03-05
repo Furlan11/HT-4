@@ -2,11 +2,19 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
+/**
+ * La clase que lee el archivo donde se encuentra la operacion, y convierte la operacion infix a postfix
+ * @author Guillermo Furlan 20713 
+ * @author Wilfredo Gallegos 20399
+ */
 public class infixToPostfix {
 
 	private IStack<String> Stack;
-	
+	/**
+	 * 
+	 * @param x ruta del archivo
+	 * @return operacion 
+	 */
 	public String leer_archivo(String x) {
 		File archivo = new File(x);
 		BufferedReader obj=null;
@@ -25,7 +33,11 @@ public class infixToPostfix {
 		return operaciones;
 		
 	}
-
+	/**
+	 * 
+	 * @param ope, recibe dato a comprobar si es numero
+	 * @return boolean con TRue si es numero
+	 */
 	public static boolean isNumeric(String ope) {
 	    try {
 	        double d = Double.parseDouble(ope);
@@ -34,7 +46,11 @@ public class infixToPostfix {
 	    }
 	    return true; //Es numerico
 	}
-	
+	/**
+	 * 
+	 * @param T, la operacion en infix
+	 * @return postfix
+	 */
 	public String input(String T) {
 		Stack<Character> stack = new Stack<Character>();
 		String postfix = "";
@@ -93,7 +109,11 @@ public class infixToPostfix {
 		return postfix;
 		
 	}
-
+/**
+ * 
+ * @param c, caracter para saber jerarquia de operaciones
+ * @return 1 si es jerarquia menor, 2 si es mayor
+ */
 	public static int prioridad(char c) {
 		if(c == '+' || c == '-') {
 			return 1;

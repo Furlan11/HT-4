@@ -1,11 +1,7 @@
 /**
- * 
- */
-
-
-/**
- * @author MAAG
- *
+ * @author Guillermo Furlan 20713 
+ * @author Wilfredo Gallegos 20399
+ * Crear listas de doble via
  */
 public class DoubleLinkedList<T> implements IList<T> {
 
@@ -19,7 +15,9 @@ public class DoubleLinkedList<T> implements IList<T> {
 		count = 0;
 	}
 	
-	@Override
+	/**
+	 * @param valor a insertar al inicio
+	 */
 	public void InsertAtStart(T value) {
 		DoubleNode<T> newNode = new DoubleNode<T>(value);
 		
@@ -40,8 +38,11 @@ public class DoubleLinkedList<T> implements IList<T> {
 		
 		count++;
 	}
-
+	/**
+	 * @param valor a insertar al final
+	 */
 	@Override
+	
 	public void InsertAtEnd(T value) {
 		
 	DoubleNode<T> newNode = new DoubleNode<T>(value);
@@ -66,6 +67,10 @@ public class DoubleLinkedList<T> implements IList<T> {
 	}
 
 	@Override
+	/**
+	 * @param value, valor a insertar
+	 * @param index, lugar en donde se agrega
+	 */
 	public void Insert(T value, int index) {
 		
 		if (IsEmpty()) //if the list is empty then insert at start
@@ -106,12 +111,18 @@ public class DoubleLinkedList<T> implements IList<T> {
 	}
 
 	@Override
+	/**
+	 * @param lugar de la lista donde eliminar el valor
+	 */
 	public T Delete(int index) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * eliminar el primer valor de la lista
+	 */
 	public T DeleteAtStart() {
 		if (!IsEmpty()) {
 			
@@ -138,12 +149,18 @@ public class DoubleLinkedList<T> implements IList<T> {
 	}
 
 	@Override
+	/**
+	 * eliminar el ultimo valor de la lista
+	 */
 	public T DeleteAtEnd() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+/**
+ * @param indice 
+ * @return valor de la posicion del indice
+ */
 	public T Get(int index) {
 	    if (!IsEmpty())
         {
@@ -185,11 +202,17 @@ public class DoubleLinkedList<T> implements IList<T> {
 	}
 
 	@Override
+	/**
+	 * verificar si la lista esta vacia
+	 */
 	public boolean IsEmpty() {
 		return count == 0;
 	}
 
 	@Override
+	/**
+	 * contar elementos de la lista
+	 */
 	public int Count() {
 		return count;
 	}
