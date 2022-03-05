@@ -18,8 +18,16 @@ public class Stack<T> {
 	public boolean esVacia() {
 		return lista.isEmpty();
 	}
-
+	public T peek() {
+		// TODO Auto-generated method stub
+		
+		return lista.get(size()-1);
+	}
 	public String toString() {
 		return lista.toString();
+	}
+	public int size() {
+		// TODO Auto-generated method stub
+		return lista.size();
 	}
 }

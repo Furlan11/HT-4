@@ -35,23 +35,78 @@ public class infixToPostfix {
 	    return true; //Es numerico
 	}
 	
-	public String input(String opcion,String T) {
-		String operacion = T;
-		if(opcion=="lista") {
-			StackUsingLinkedList<String> lista = new StackUsingLinkedList<String>();
-			String valor = "";
-			
-			
-		}else {
-			if(opcion=="double") {
-				StackUsingDoubleLinkedList<String> doublelist = new StackUsingDoubleLinkedList<String>();
+	public String input(String T) {
+		Stack<Character> stack = new Stack<Character>();
+		String postfix = "";
+		char[] chars = T.toCharArray();
+		for(int i=0;i<chars.length;i++) {
+			char c=chars[i];
+			if(c != '+' && c != '-' && c != '*' && c != '/' && c != '(' && c != ')') {
+				postfix = postfix + c;
+			} else if(c == '(') {
+				stack.agregar(c);
+			} else if(c == ')') {
+				while(!stack.esVacia()) {
+					char t = stack.obtener();
+					if(t != '(') {
+						postfix = postfix + t;
+					}
+					else {
+						break;
+					}
+				}
+			} else if(c == '+' || c == '-' || c == '*' || c == '/') {
+				if(stack.esVacia()) {
+					stack.agregar(c);
+				}
+				else {
+					while(!stack.esVacia()) {
+						char t = stack.obtener();
+						if(t == '(') {
+							stack.agregar(t);
+							break;
+						} if(t == '+' || t == '-' || t == '*' || t == '/') {
+							if(prioridad(t) < prioridad(c)) {
+								stack.agregar(t);
+								break;
+							}if	(prioridad(t) == prioridad(c))	{
+								postfix = postfix + c ;
+								c=t;
+								break;
+							}
+							else {
+								postfix = postfix + t;
+								break;
+							}
+						}					
+					
+					}
+					stack.agregar(c);
+				}
+				
 			}
+		
 		}
+		while(!stack.esVacia()) {
+			postfix = postfix + stack.obtener();
+		}
+		return postfix;
 		
-		
-		return T;
+	}
+
+	public static int prioridad(char c) {
+		if(c == '+' || c == '-') {
+			return 1;
+		}
+		else {
+			return 2;
+		}
 	}
 }
+
+
+
+
 /*
  * 			for(int i = 0; i< operacion.length(); i++) {
 				if(String.valueOf(operacion.charAt(i))=="(") {
